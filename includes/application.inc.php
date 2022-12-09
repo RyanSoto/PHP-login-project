@@ -38,15 +38,16 @@ if (isset($_POST["submit"])) {
     $haveFelony = $_POST["haveFelony"];
     $felony = $_POST['felony'];
     $comments = $_POST["comment"];
-
+    $sendTo = $_POST["sendTo"];
+    
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    // postApp($conn, $appAddress, $lengthOfOcc, $moveindate, $name, $email, $phone, $lastadd, 
-    // $city, $state, $zipCode, $monthRent, $lastaddlen, $employmentstat, $company, $grossinc,  
-    // $pets, $petsdescrip, $onlyoccupant, $occupant2name, $occupant2relation, $occupant3name, $occupant3relation, $haveSSN, 
-    // $SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments);
+    postApp($conn, $appAddress, $lengthOfOcc, $moveindate, $name, $email, $phone, $lastadd, 
+    $city, $state, $zipCode, $monthRent, $lastaddlen, $employmentstat, $company, $grossinc,  
+    $pets, $petsdescrip, $onlyoccupant, $occupant2name, $occupant2relation, $occupant3name, $occupant3relation, $haveSSN, 
+    $SSN, $dob, $haveEviction, $eviction, $haveFelony, $felony, $comments);
 
 
 
@@ -75,7 +76,7 @@ if (isset($_POST["submit"])) {
 
         //Recipients
         $mail->setFrom('applications@coolbreezetexas.com', 'CoolBreezeTexas Applications');
-        $mail->addAddress('ryansoto361@hotmail.com', 'applications');     //Add a recipient
+        $mail->addAddress($sendTo, 'applications');     //Add a recipient
         // $mail->addAddress('applications@coolbreezetexas.com');               //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');
         // $mail->addCC('cc@example.com');
